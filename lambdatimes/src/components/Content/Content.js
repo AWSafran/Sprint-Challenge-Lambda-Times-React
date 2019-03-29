@@ -17,12 +17,10 @@ export default class Content extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state);
     this.setState({
       tabs: tabData,
       cards: cardData
     })
-    console.log(this.state);
   }
 
   changeSelected = tab => {
@@ -50,7 +48,7 @@ export default class Content extends Component {
     }
 
     else{
-      const filteredCards = cardData.filter(card => card.tab === tab);
+      const filteredCards = cardData.filter(card => card.tab === this.state.selected);
       this.setState({cards: filteredCards});
     }
 
@@ -71,7 +69,7 @@ export default class Content extends Component {
           selectedTab={this.state.selected}
           selectTabHandler={this.changeSelected} 
         />
-        <Cards cards={this.filterCards()} />
+        {/* <Cards cards={this.filterCards()} /> */}
       </div>
     );
   }
